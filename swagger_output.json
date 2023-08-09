@@ -1,0 +1,61 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Passenger Management System API",
+    "description": "Passenger Management System API Documentation"
+  },
+  "host": "localhost",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/calc/fare/{LatitudeFrom}/{LongitudeFrom}/{LatitudeTo}/{LongitudeTo}": {
+      "get": {
+        "tags": [
+          "Calculations"
+        ],
+        "description": "Calculations",
+        "parameters": [
+          {
+            "name": "LatitudeFrom",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "LongitudeFrom",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "LatitudeTo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "LongitudeTo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

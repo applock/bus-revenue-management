@@ -1,0 +1,60 @@
+{
+    "name": "Hisar-Rohtak",
+    "code": "2282",
+    "stops": [
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb31",
+        "stopName": "Hisar",
+        "sequence": 1,
+        "in": 15,
+        "out": 0,
+        "latitude": 29.146305,
+        "longitude": 75.723526
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb26",
+        "stopName": "Hansi",
+        "sequence": 2,
+        "in": 6,
+        "out": 3,
+        "latitude": 29.093547,
+        "longitude": 75.949568
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb3f",
+        "stopName": "Bawani Khera",
+        "sequence": 3,
+        "in": 1,
+        "out": 4,
+        "latitude": 28.959929,
+        "longitude": 76.023227
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb2d",
+        "stopName": "Bhiwani",
+        "sequence": 4,
+        "in": 2,
+        "out": 7,
+        "latitude": 28.815007,
+        "longitude": 76.144924
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb28",
+        "stopName": "Kalanaur",
+        "sequence": 5,
+        "in": 1,
+        "out": 2,
+        "latitude": 28.828667,
+        "longitude": 76.403995
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb3b",
+        "stopName": "Rohtak",
+        "sequence": 6,
+        "in": 0,
+        "out": 9,
+        "latitude": 28.902194,
+        "longitude": 76.583905
+      }
+    ]
+  }
