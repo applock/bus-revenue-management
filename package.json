@@ -20,8 +20,6 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
-    "node-cron": "^3.0.2",
-    "pm2": "^4.2.3",
     "swagger-autogen": "^2.23.5",
     "swagger-ui-express": "^5.0.0"
   },
