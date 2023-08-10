@@ -24,17 +24,18 @@ router.get("/fare/:count/:fromLat/:fromLong/:toLat/:toLong", (req, resp) => {
     parseFloat(req.params.toLong)
   );
   let distanceTravelledInKms = point1.distanceTo(point2, true);
-  output.distance = distanceTravelledInKms;
+  output.distance = parseFloat(distanceTravelledInKms.toFixed(decimalPoints));
+  output.distanceUnit = "KMS";
   console.log("Distance in Kms - " + distanceTravelledInKms);
 
   let fare = distanceTravelledInKms * fareConstant;
   console.log("Individual fare - " + fare);
-  output.fare = fare;
+  output.fare = parseFloat(fare.toFixed(decimalPoints));
 
   let totalFare = fare * parseInt(req.params.count);
   console.log("Total fare - " + totalFare);
-  output.totalFare = totalFare;
-  output.unit = "INR";
+  output.totalFare = parseFloat(totalFare.toFixed(decimalPoints));
+  output.fareCurrency = "INR";
 
   resp.send(output);
 });
@@ -63,14 +64,16 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
 
     let previousStop = stopArr[0];
     let countInsideBus = previousStop.in;
-    let earning = 0.00;
+    let earning = 0.0;
     output.detailedEarning = [];
 
     for (let i = 1; i < stopArr.length; i++) {
       let currentStop = stopArr[i];
       let point1 = new GeoPoint(previousStop.latitude, previousStop.longitude);
       let point2 = new GeoPoint(currentStop.latitude, currentStop.longitude);
-      let distanceTravelledInKms = point1.distanceTo(point2, true).toFixed(decimalPoints);
+      let distanceTravelledInKms = point1
+        .distanceTo(point2, true)
+        .toFixed(decimalPoints);
       let fare = distanceTravelledInKms * fareConstant;
       let hopEarning = parseFloat(fare * countInsideBus);
       output.detailedEarning.push({
@@ -79,7 +82,8 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
         fare: fare.toFixed(decimalPoints),
         earning: hopEarning.toFixed(decimalPoints),
       });
-      earning = parseFloat(earning) + parseFloat(hopEarning.toFixed(decimalPoints));
+      earning =
+        parseFloat(earning) + parseFloat(hopEarning.toFixed(decimalPoints));
       countInsideBus = countInsideBus + currentStop.in - currentStop.out;
       previousStop = currentStop;
     }
@@ -87,7 +91,7 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
   } else {
     resp.send(output);
   }
-  output.unit = "INR";
+  output.fareCurrency = "INR";
 
   resp.send(output);
 });
