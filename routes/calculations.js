@@ -4,6 +4,7 @@ const router = express.Router();
 const GeoPoint = require("geopoint");
 const fs = require("fs");
 const fareConstant = process.env.FARE_CONSTANT;
+const decimalPoints = parseInt(process.env.DECIMAL_POINTS);
 
 router.get("/fare/:count/:fromLat/:fromLong/:toLat/:toLong", (req, resp) => {
   // #swagger.tags = ['Calculations']
@@ -62,27 +63,27 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
 
     let previousStop = stopArr[0];
     let countInsideBus = previousStop.in;
-    let earning = 0;
+    let earning = 0.00;
     output.detailedEarning = [];
 
     for (let i = 1; i < stopArr.length; i++) {
       let currentStop = stopArr[i];
       let point1 = new GeoPoint(previousStop.latitude, previousStop.longitude);
       let point2 = new GeoPoint(currentStop.latitude, currentStop.longitude);
-      let distanceTravelledInKms = point1.distanceTo(point2, true);
+      let distanceTravelledInKms = point1.distanceTo(point2, true).toFixed(decimalPoints);
       let fare = distanceTravelledInKms * fareConstant;
-      let hopEarning = fare * countInsideBus;
+      let hopEarning = parseFloat(fare * countInsideBus);
       output.detailedEarning.push({
         stretch: previousStop.stopName + "-" + currentStop.stopName,
         passengercount: countInsideBus,
-        fare: fare,
-        earning: hopEarning,
+        fare: fare.toFixed(decimalPoints),
+        earning: hopEarning.toFixed(decimalPoints),
       });
-      earning = earning + hopEarning;
+      earning = parseFloat(earning) + parseFloat(hopEarning.toFixed(decimalPoints));
       countInsideBus = countInsideBus + currentStop.in - currentStop.out;
       previousStop = currentStop;
     }
-    output.totalEarnings = earning;
+    output.totalEarnings = earning.toFixed(decimalPoints);
   } else {
     resp.send(output);
   }
