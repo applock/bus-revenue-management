@@ -64,6 +64,7 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
 
     let previousStop = stopArr[0];
     let countInsideBus = previousStop.in;
+    let distance = 0.0;
     let earning = 0.0;
     output.detailedEarning = [];
 
@@ -79,14 +80,18 @@ router.get("/earning/route/:routeCode/:date", (req, resp) => {
       output.detailedEarning.push({
         stretch: previousStop.stopName + "-" + currentStop.stopName,
         passengercount: countInsideBus,
+        distanceInKms: parseFloat(distanceTravelledInKms),
         fare: fare.toFixed(decimalPoints),
         earning: hopEarning.toFixed(decimalPoints),
       });
       earning =
         parseFloat(earning) + parseFloat(hopEarning.toFixed(decimalPoints));
+      distance =
+        distance + parseFloat(parseFloat(distanceTravelledInKms).toFixed(decimalPoints));
       countInsideBus = countInsideBus + currentStop.in - currentStop.out;
       previousStop = currentStop;
     }
+    output.totalDistanceInKms = distance;
     output.totalEarnings = earning.toFixed(decimalPoints);
   } else {
     resp.send(output);

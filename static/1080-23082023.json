@@ -1,0 +1,42 @@
+{
+    "name": "Chandigarh-Delhi",
+    "code": "1080",
+    "stops": [
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb31",
+        "stopName": "Chandigarh",
+        "sequence": 1,
+        "in": 3,
+        "out": 0,
+        "latitude": 30.718914,
+        "longitude": 76.799402
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb26",
+        "stopName": "Ambala",
+        "sequence": 2,
+        "in": 3,
+        "out": 0,
+        "latitude": 30.374863,
+        "longitude": 76.759945
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb3f",
+        "stopName": "Kurukshetra",
+        "sequence": 3,
+        "in": 0,
+        "out": 4,
+        "latitude": 29.969798,
+        "longitude": 76.858586
+      },
+      {
+        "stopId": "5f48ce592a9bb065cdf9fb2d",
+        "stopName": "Delhi",
+        "sequence": 4,
+        "in": 0,
+        "out": 2,
+        "latitude": 28.637595,
+        "longitude": 77.228881
+      }
+    ]
+  }
