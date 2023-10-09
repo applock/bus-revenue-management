@@ -56,6 +56,33 @@
           }
         }
       }
+    },
+    "/calc/earning/route/{routeCode}/{date}": {
+      "get": {
+        "tags": [
+          "Calculations"
+        ],
+        "description": "Calculations",
+        "parameters": [
+          {
+            "name": "routeCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   }
 }

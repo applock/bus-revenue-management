@@ -6,8 +6,8 @@ const endpointsFiles = ["./routes/*"];
 const doc = {
   info: {
     version: "1.0.0",
-    title: "Passenger Management System API",
-    description: "Passenger Management System API Documentation",
+    title: "Bus Revenue Management System API",
+    description: "Bus Revenue Management System API Documentation",
   },
   //host: process.env.HOST + ":443",
   host: "localhost",
